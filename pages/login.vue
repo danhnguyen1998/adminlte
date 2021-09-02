@@ -46,25 +46,12 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button
-                type="submit"
-                class="btn btn-primary btn-block"
-                @click="login"
-                v-if="!loading"
-              >
-                Sign In
-              </button>
-              <button
-                type="submit"
-                class="btn btn-primary btn-block"
-                @click="login"
+              <button-component
+                :onClick="login"
                 :loading="loading"
-                v-else
+                :name="title"
               >
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </button>
+              </button-component>
             </div>
             <!-- /.col -->
           </div>
@@ -86,12 +73,18 @@
 </template>
 
 <script>
+import ButtonComponent from "../components/Button";
+
 export default {
+  components: {
+    ButtonComponent
+  },
   data() {
     return {
       username: "",
       password: "",
-      loading: false
+      loading: false,
+      title: "Sign In"
     };
   },
   methods: {

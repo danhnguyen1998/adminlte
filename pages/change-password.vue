@@ -12,7 +12,7 @@
             password now.
           </p>
 
-          <form action="login.html" method="post">
+          <form @submit.prevent="requestNewPassword" method="post">
             <div class="input-group mb-3">
               <input
                 type="password"
@@ -69,9 +69,7 @@ export default {
   methods: {
     requestNewPassword() {
       setTimeout(() => {
-        if (this.username === "admin" && this.password === "admin") {
-          this.$router.push("/change-password");
-        }
+        this.$router.push("/login");
       }, 1000);
     }
   }
